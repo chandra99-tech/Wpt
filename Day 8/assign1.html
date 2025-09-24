@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display para</title>
+</head>
+
+<body>
+    <p id="p1">Hello!</p>
+    <p id="p2"></p>
+    <p id="p3"></p>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        let a = $("#p1").text()
+        $("#p2").text(a)
+        $("#p2").css("font-style", "italic")
+        $("#p3").text(a)
+        $("#p3").css("text-decoration", "underline")
+    </script>
+</body>
+
+</html>

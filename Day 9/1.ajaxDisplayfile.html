@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax display file</title>
+</head>
+<body>
+
+    <button type="button" id="b1" onclick="fetchdata()">Diplay from data file</button>
+    <p id="p1"></p>
+    <script>
+        function fetchdata(){
+            let b=new XMLHttpRequest()
+            b.open("GET","data.txt",true)
+            b.send()
+            b.onload=function(){
+                
+                console.log(this.response)
+                if(this.status == 200){
+                    console.log(this.response)
+                }
+            }
+        }
+    </script>
+    
+</body>
+</html>

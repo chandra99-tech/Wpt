@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            border: 2px solid black; 
+            margin: 10px;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <form action="" id="form1">
+        
+        <div id="d1">
+            <label for="username">Enter Username :</label>
+            <input type="text" id="username" required minlength="3" maxlength="12">
+            <p id="p1"></p>
+        </div>
+
+         <div id="d1">
+            <label for="password">Enter Password :</label>
+            <input type="text" id="password" required minlength="3" maxlength="12">
+            <p id="p2"></p>
+        </div>
+
+         <div id="d1">
+            <label for="email">Enter Email :</label>
+            <input type="text" id="email" required>
+            <p id="p3"></p>
+        </div>
+
+        <button type="submit" onclick="hello()" value="click">Submit</button>
+        <button type="reset">Reset</button>
+
+        
+
+
+    </form>
+    <script>
+        function hello(){
+        let d=document.getElementById("username").value
+        if(d.trim()==""){
+            document.getElementById("p1").innerHTML="please enter valid user name"
+        }
+        let x=document.getElementById("password").value
+        if(x.trim()==""){
+            document.getElementById("p2").innerHTML="please enter valid password"
+        }
+        let y=document.getElementById("email").value
+        if(y.trim()==""){
+            document.getElementById("p3").innerHTML="please enter valid email"
+        }
+        
+        console.log(d)}
+    </script>
+    </body>
+</html>
+
+
+
+
+     

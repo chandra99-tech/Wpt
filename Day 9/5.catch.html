@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       function division(a,b){
+
+        try{
+            if(b==0)
+            throw new Error("Division is not allowed")
+        const result= a/b
+        console.log(`Result=${result}`)
+        }
+        catch(error){
+            console.log(`Error:${error.msg}`)
+        }
+        finally{
+            console.log("operation is complete")
+        }
+
+
+       }
+
+       division(10,5)
+       division(10,0)
+    </script>
+</body>
+</html>

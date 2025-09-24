@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Call_back</title>
+</head>
+<body id="demo2">
+    <h1 id="demo1">Browser callback function</h1>
+    <h1 id="demo"></h1>
+    <script>
+       const intervalID= setInterval(myfunction,300)
+
+        function myfunction(){
+            let d=new Date()
+            document.getElementById("demo").innerHTML=d
+        }
+        setTimeout(myfunction1, 5000)
+
+        function myfunction1(){
+            clearInterval(intervalID)
+            alert('Time Out')
+            document.body.innerHTML="";
+            console.log("The Time is Up")
+        }
+
+        // function myfunction(callback){
+        //     setTimeout(()=> {
+        //         clearInterval(myfunction1)
+        //         alert('Time is up')
+        //         document.body.innerHTML=""
+        //         console.log("Time Ended")
+        //         callback ()
+        //     },5000);
+        // }
+        //  setInterval(myfunction1,500)
+        // function myfunction1(){
+        //     let d=new Date()
+        //     document.getElementById("demo").innerHTML=d
+        // }
+        // myfunction(myfunction1)
+
+    // const intervalid=setInterval(()=>{
+    //     console.log("hello")
+    // },1000)
+    // setTimeout(()=>{
+    //     clearInterval(intervalid)
+    //     console.log("timeout")
+    // },5000)
+     </script>
+
+    
+</body>
+</html>

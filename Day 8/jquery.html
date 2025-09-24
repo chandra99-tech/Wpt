@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #d1 {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            background-color: rgba(205, 236, 93, 0.932);
+            color: rgb(0, 0, 0);
+            font-weight: 900;
+            font-family: 'Times New Roman', Times, serif;
+            border: 2px solid rgba(238, 72, 216, 0.952);
+            border-radius: 5px;
+            height: 35px;
+            margin: 0px 5px;
+        }
+
+        #p1 {
+            position: absolute;
+            left: 450px;
+            color: red;
+            background-color: bisque;
+            font-family: cursive;
+            font-weight: bold;
+            font-style: italic;
+            width: fit-content;
+        }
+
+        button:hover {
+            background-color: rgba(39, 243, 39, 0.938);
+            color: white;
+            font-family: cursive;
+            font-weight: 900;
+        }
+    </style>
+
+</head>
+
+<body>
+        <div id="d1">
+            <button type="button" id="b1">Click me to hide!</button>
+            <button type="button" id="b2">Click me to show!</button>
+        </div>
+        <p id="p1">para 1 hello</p>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js">
+
+    </script>
+
+    <script>
+        // $(document).ready(function () {
+        $("#b1").click(function () {
+            $("#p1").hide()
+        })
+
+        // })
+        // $(document).ready(function () {
+        $("#b2").click(function () {
+            $("#p1").show()
+        })
+
+        // })
+    </script>
+</body>
+
+</html>

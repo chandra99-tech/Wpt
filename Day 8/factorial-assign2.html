@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Factorial Using JQuery</title>
+</head>
+<body>
+    <label for="">Enter a Number :</label>
+    <input type="number" name="num" id="i1" placeholder="Enter any number" required >
+    <button id="b1" type="submit" value="Click">Submit</button>
+
+    <p id="p1"></p>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        let fact=1
+        $(document).ready(function (){
+            $("#b1").click(function(){
+                let a= $("#i1").val()
+                console.log(a)
+                for (let i = 1; i <=a; i++) {
+                    fact=fact*i
+                }
+                console.log(fact)
+                $("#p1").text(fact)
+            })
+        })
+
+    </script>
+</body>
+</html>

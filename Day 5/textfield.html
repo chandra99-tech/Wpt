@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text field</title>
+</head>
+
+<body>
+    <label for="textfield">Enter Text : </label>
+    <br>
+    <textarea name="textfield" id="textfield"></textarea>
+    <br>
+    <button onclick="document.getElementById('textfield').innerHTML=s">Add Array</button>
+    <br>
+    <button onclick="arrUnshift()">Add Start</button>
+    <button onclick="arrPush()">Add End </button>
+    <br>
+    <button onclick="arrShift()">Delete Start</button>
+    <button onclick="arrPop()">Delete End</button>
+    <br>
+    <button onclick="odd()">Display Odd</button>
+    <button onclick="even()">Display Even</button>
+
+    <script>
+        let s = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        function arrPush() {
+            let n = s.length + 1
+            s.push(n)
+
+            document.getElementById('textfield').innerHTML = s
+        }
+        function arrUnshift() {
+            let n1 = s.length - 9
+            s.unshift(-n1)
+            document.getElementById('textfield').innerHTML = s
+        }
+        function arrPop() {
+            s.pop()
+            document.getElementById('textfield').innerHTML = s
+        }
+        function arrShift() {
+            s.shift()
+            document.getElementById('textfield').innerHTML = s
+        }
+        function odd() {
+            let oddnumbers = s.filter((e) => { return e % 2 != 0 })
+            document.getElementById('textfield').innerHTML = oddnumbers
+        }
+        function even() {
+            let evennumbers = s.filter((e) => { return e % 2 == 0 })
+            document.getElementById('textfield').innerHTML = evennumbers
+        }
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation</title>
+</head>
+
+<body>
+    <div id="d1" style="width: 100px;">
+        <p style="background-color: aqua; color: black; font-family: cursive; font-size: small; position: absolute; width: fit-content; left: 0; right: 0;"
+            id="p1">
+            “So many books, so little time.”
+        </p>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#d1").click(function () {
+                $("#p1").stop(true, true); // Clear any existing animation queue
+
+                let leftCount = 0;
+                function animateLeftToRight() {
+                    if (leftCount < 4) {
+                        $("#p1").animate({ "left": "450px" }, 1000, "swing", function () {
+                            $("#p1").animate({ "left": "0px" }, 1000, "swing", function () {
+                                leftCount++;
+                                if (leftCount === 4) {
+                                    animateRightToLeft(); // Start right-to-left after 4 cycles
+                                } else {
+                                    animateLeftToRight();
+                                }
+                            });
+                        });
+                    }
+                }
+
+                let rightCount = 0;
+                function animateRightToLeft() {
+                    if (rightCount < 4) {
+                        $("#p1").animate({ "right": "0" }, 1000, "swing", function () {
+                            $("#p1").animate({ "right": "450px" }, 1000, "swing", function () {
+                                rightCount++;
+                                animateRightToLeft();
+                            });
+                        });
+                    }
+                }
+
+                animateLeftToRight(); // Start the left-to-right animation sequence
+            });
+        });
+    </script>
+</body>
+
+</html>

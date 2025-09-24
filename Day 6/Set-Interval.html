@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Interval</title>
+</head>
+
+<body style="margin: 0; padding: 0; font-family: 'Times New Roman', Times, serif;">
+
+    <h1 style="background-color: rgb(54, 233, 233); color: white;">JavaScript Functions</h1>
+    <h2 style="background-color: rgba(219, 230, 69, 0.637);">setInterval() with a Callback</h2>
+
+    <p style="font-family: cursive;">Using setInterval() to display the time every second (300 milliseconds).</p>
+
+    <h1 id="demo" style="font-style: italic; font-family: cursive; color: rgb(218, 105, 53);" ></h1>
+
+    <script>
+        setInterval(myFunction, 300);
+
+        function myFunction() {
+            let d = new Date();
+            document.getElementById("demo").innerHTML =
+                d.getHours() + ":" +
+                d.getMinutes() + ":" +
+                d.getSeconds();
+        }
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax display file</title>
+</head>
+<body>
+
+    <button type="button" id="b1" onclick="fetchdata()">Diplay from data file</button>
+    <table id="t1" style="border: 5px solid black;"></table>
+    <script>
+        function fetchdata(){
+            let b=new XMLHttpRequest()
+            b.open("GET","https://jsonplaceholder.typicode.com/posts/3",true)
+            b.send()
+            b.onload=function(){
+                
+                console.log(this.response)
+                if(this.status == 200){
+                    console.log(this.responseText)
+                    let dataJson = this.responseText;
+                
+                let r = JSON.parse(dataJson);
+                console.log(r);
+                let t=document.getElementById("t1").innerHTML=`<tr>
+                            <th>User ID</th>
+                            <th>ID</th>
+                            <th>Title</th>
+                            <th>Body</th>
+                        </tr>
+                        <tr>
+                            <td>${r.userId}</td>
+                            <td>${r.id}</td>
+                            <td>${r.title}</td>
+                            <td>${r.body}</td>
+                        </tr>
+                    `;
+              
+                }
+            }
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function table(){
+            let n = document.getElementById("d").value
+        a=[]
+        let out="<table Border=2>"
+            for(var i=1;i<=10;i++){
+                let str=`<tr><td> ${n} * ${i}= ${n*i} <tr><td>`
+              out=out.concat(str)
+
+
+            }
+            out=out.concat("</table>")
+            document.getElementById("d1").innerHTML=out
+        }
+        
+            
+    </script>
+</head>
+<body>
+
+
+
+<input type="number" id="d">
+<button onclick="table()">table</button> 
+<div id="d1">
+
+</div>   
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object to Jacon Format</title>
+</head>
+
+<body>
+    <h1>Accepet Data From User</h1>
+
+    <label for="user First Name">First Name:-</label><input type="text" id="FirstName"
+        placeholder="First Name" /><br /><br />
+    <label for="user Last Name">Last Name:-</label><input type="text" id="LastName"
+        placeholder="Last Name" /><br /><br />
+    <label for="Age">Age:-</label><input type="number" id="userAge" placeholder="Age"
+        style="width: 40px;" /><br /><br />
+    <button onclick="s1()">Submit</button><br /><br /><br />
+    <label id="abc"></label>
+
+    <div id="userTable"></div>
+
+    <script>
+        let data1 = [];
+        function s1() {
+
+            let firstname = document.getElementById("FirstName").value.slice(0, 2).toLowerCase();
+            let lastname = document.getElementById("LastName").value.slice(0, 2).toLowerCase();
+            let age = document.getElementById("userAge").value;
+            
+
+            
+
+
+            let userObject = { "firstName": firstname, "lastName": lastname, "userAge": age };
+            data1.push(userObject);
+            let data = JSON.stringify(userObject);
+            console.log(data);
+
+            let newObject = JSON.parse(data);
+
+            //console.log(newObject.firstName);
+            let tableHTML = `
+        <table border="1" cellpadding="5" cellspacing="0">
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Age</th>
+            </tr>
+    `;
+
+            for (let i = 0; i < data1.length; i++) {
+                tableHTML += `
+            <tr>
+                <td>${data1[i].firstName}</td>
+                <td>${data1[i].lastName}</td>
+                <td>${data1[i].userAge}</td>
+            </tr>
+        `;
+            }
+            tableHTML += `</table>`;
+            document.getElementById("userTable").innerHTML = tableHTML;
+        }
+    </script>
+
+</body>
+
+</html>
