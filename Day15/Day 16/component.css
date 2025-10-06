@@ -1,0 +1,16 @@
+.fact{
+    border: 1px solid black;
+    width: 350px;
+    padding: 30px;
+    background-color: rgb(75, 92, 92);
+    color: white;
+    margin: 10px;
+    border-radius: 10px;
+    justify-content: center;
+    align-content: center;
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
