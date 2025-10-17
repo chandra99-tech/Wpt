@@ -1,0 +1,118 @@
+1)login iet
+
+
+
+import React, { useState } from 'react'
+
+function App() {
+  const[name,setName]=useState("")
+  const[pass,setPass]=useState("")
+  const[msg,setMsg]=useState("")
+
+  function validate(){
+     return (name=="iet" && pass=="iet")}
+
+  function check(e){
+    e.preventDefault()
+    if(validate()){
+      setMsg("valid")
+    }
+    
+    }
+  return (
+    <div>
+      <form onSubmit={check}>
+        <label htmlFor="">name</label> <br />
+        <input type="text" value={name} onChange={(e)=>setName(e.target.value)}/> <br />
+        <label htmlFor="">pass</label> <br />
+        <input type="text" value={pass} onChange={(e)=>setPass(e.target.value)}/>
+        <button type="submit" >submit</button>
+      </form>
+      <p>{msg}</p>
+      
+    </div>
+  )
+
+}
+
+export default App
+
+
+
+2)Use callback
+
+import React, { useCallback, useState } from 'react'
+import { use } from 'react'
+
+function Counter() {
+    const[count,setCount]=useState(0)
+
+    const incr=useCallback(()=>{
+        setCount((prev)=>prev+1)
+    })
+
+    const decr=useCallback(()=>{
+        setCount((prev)=>prev-1)
+    })
+
+    const res=useCallback(()=>{
+        setCount(0)
+    })
+  return (
+    <div>
+      <h1>counter</h1>
+      <p>value is {count}</p>
+      <button onClick={incr}>+</button>
+      <button onClick={decr}>-</button>
+      <button onClick={res}>re</button>
+    </div>
+  )
+}
+
+export default Counter
+
+
+3)pass
+
+import React, { useEffect, useState } from 'react'
+
+function App() {
+  const[length,setLength]=useState(12)
+  const[pass,setPass]=useState()
+  const[includenumber,setIncludenumber]=useState(false)
+  const[includesymbol,setIncludesymbol]=useState(false)
+
+  useEffect(()=>{generatrpass()},[length,includenumber,includesymbol])
+
+
+
+  function generatrpass(){
+    let characters="QqWwEeRrTtYyUuIiOoPpLlKkJjHhGgFfDdSsAaZzXxCcVvBbNnMm"
+    if(includenumber){
+      characters+="1234567890"
+    }
+    if(includesymbol){
+      characters+="!@#$%^&*()-+"
+    }
+    let newpass=""
+    for(let i=0;i<length;i++){
+      newpass+=characters.charAt(
+        Math.floor(Math.random()*characters.length)
+      )
+
+    }
+    setPass(newpass)
+  }
+  return (
+    <div>
+      <h1>Generate pass</h1>
+      <input type="number" value={length} onChange={(e)=>setLength(e.target.value)}/>
+      <input type="checkbox" name="number" id="number" value={includenumber} onChange={(e)=>setIncludenumber(e.target.checked)} />Number
+      <input type="checkbox" name="number" id="number" value={includesymbol} onChange={(e)=>setIncludesymbol(e.target.checked)} />setIncludesymbol
+      <button onClick={generatrpass}>generate</button>
+      <p>{pass}</p>
+    </div>
+  )
+}
+
+export default App

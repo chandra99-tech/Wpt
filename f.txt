@@ -1,0 +1,212 @@
+1]
+class component life cycle
+import React, { Component } from 'react'
+
+export default class Fact extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: this.props.data
+        };
+        console.log("constructor");
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log("getDerivedStateFromProps");
+        if (nextProps.data !== prevState.data) {
+            return { data: nextProps.data };
+        }
+        return null;
+    }
+
+    componentDidMount() {
+        console.log("componentDidMount");
+    }
+
+    shouldComponentUpdate() {
+        console.log("shouldComponentUpdate");
+        return true;
+    }
+
+    handler1 = (e) => {
+        this.setState({ data: "after event" });
+    }
+
+    render() {
+        console.log("render");
+        return (
+            <div>
+                <h1>class compo</h1>
+                <button onClick={this.handler1}>kk</button>
+                <p>{this.state.data}</p>
+            </div>
+        );
+    }
+}
+
+2]
+functional com. lifecycle
+import React, { useState, useEffect } from 'react';
+
+function Fact({ data }) {
+    const [localData, setLocalData] = useState(data);
+
+    // Simulates constructor/initial state setup (runs on first render)
+    console.log("Initial render / 'constructor' equivalent");
+
+    // Simulates getDerivedStateFromProps (runs before every render, checks props)
+    useEffect(() => {
+        console.log("useEffect simulating getDerivedStateFromProps");
+        setLocalData(data); // Update local state if prop changes
+    }, [data]);
+
+    // Simulates componentDidMount (runs after first render)
+    useEffect(() => {
+        console.log("useEffect simulating componentDidMount");
+    }, []); // Empty deps: only on mount
+
+    // Simulates componentDidUpdate (runs after re-renders, e.g., on prop/state change)
+    useEffect(() => {
+        console.log("useEffect simulating componentDidUpdate");
+    }, [data, localData]); // Deps: re-run on prop or state change
+
+    // Simulates shouldComponentUpdate (custom logic to prevent re-render if needed)
+    // Note: For optimization, use React.memo or useCallback, but here we just log
+    console.log("Render / 'shouldComponentUpdate' check");
+
+    // Cleanup simulates componentWillUnmount
+    useEffect(() => {
+        return () => {
+            console.log("useEffect cleanup simulating componentWillUnmount");
+        };
+    }, []); // Empty deps: only on unmount
+
+    const handler1 = () => {
+        setLocalData("after event");
+    };
+
+    console.log("render end");
+
+    return (
+        <div>
+            <h1>Functional Component Lifecycle</h1>
+            <button onClick={handler1}>kk</button>
+            <p>{localData}</p>
+        </div>
+    );
+}
+
+export default Fact;
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
+function GetData() {
+    const [data, setData] = useState([]);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        // Make GET request to fetch data
+        axios
+            .get("https://jsonplaceholder.typicode.com/posts")  // Fixed URL here
+            .then((response) => {
+                setData(response.data);
+            })
+            .catch((err) => {
+                setError(err.message);
+            });
+    }, []);
+
+    if (error) return <div>Error: {error}</div>;
+
+    return (
+        <div>
+            <h1>Posts</h1>
+            <ul>
+                {data.map((post) => (
+                    <li key={post.id}>{post.title}</li>
+                ))}
+            </ul>
+        </div>
+    );
+};
+
+export default GetData;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Multiplication Table</title>
+</head>
+<body>
+    <h1>Multiplication Table</h1>
+    <!-- This is where the user enters a number -->
+    <label>Enter a number:</label>
+    <input type="number" id="num">
+    <button onclick="makeTable()">Show Table</button>
+    
+    <!-- This is where the table will appear -->
+    <div id="tableHere"></div>
+
+    <script>
+        // This function makes the table when button is clicked
+        function makeTable() {
+            // Get the number from the input box
+            var number = document.getElementById("num").value;
+            number = parseInt(number); // Make sure it's a whole number
+            
+            // Check if it's a valid number
+            if (isNaN(number)) {
+                alert("Please enter a number!");
+                return; // Stop if not a number
+            }
+            
+            // Start building the table as a string
+            var tableHTML = "<table border='1'>";
+            tableHTML += "<tr><th>Multiple</th><th>Result</th></tr>";
+            
+            // Loop from 1 to 10 to make rows (all in one line per row)
+            for (var i = 1; i <= 10; i++) {
+                tableHTML += "<tr><td>" + number + " x " + i + "</td><td>" + (number * i) + "</td></tr>";
+            }
+            
+            tableHTML += "</table>";
+            
+            // Put the table on the page
+            document.getElementById("tableHere").innerHTML = tableHTML;
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <div id="result"></div>
+    <button id="loadBtn">Load Content</button>
+
+    <script>
+        $("#loadBtn").click(function () {
+
+            $.ajax({
+                url: "https://jsonplaceholder.typicode.com/posts/1",
+                method: "GET",
+                success: function (data) {
+                    $("#result").html(`
+                        <h3>${data.title}</h3>
+                        <p>${data.body}</p>
+                    `);
+                    console.log("Content loaded successfully!");
+                },
+                error: function (xhr) {
+                    $("#result").html("Error loading content: " + xhr.status);
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
